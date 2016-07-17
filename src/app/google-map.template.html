@@ -1,0 +1,5 @@
+<ng-map zoom="{{$ctrl.zoom}}" center="{{$ctrl.center}}">
+  <marker ng-repeat="station in $ctrl.stations"
+  position="[{{station.position.lat}}, {{station.position.lng}}]"
+  title="{{station.name}}"></marker>
+</ng-map>
