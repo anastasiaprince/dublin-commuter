@@ -9,6 +9,7 @@
     </info-window>
     <marker ng-repeat="(index, station) in $ctrl.stations"
       id="{{station.number}}"
+      icon="{{$ctrl.getIcon(station)}}"
       position="[{{station.position.lat}}, {{station.position.lng}}]"
       title="{{station.number}} {{station.name}}"
       on-click="$ctrl.showStationInfo(event, index)"></marker>
