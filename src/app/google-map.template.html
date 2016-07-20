@@ -1,5 +1,16 @@
-<ng-map zoom="{{$ctrl.zoom}}" center="{{$ctrl.center}}" style="height: 100%;">
-  <marker ng-repeat="station in $ctrl.stations"
-  position="[{{station.position.lat}}, {{station.position.lng}}]"
-  title="{{station.name}}"></marker>
-</ng-map>
+<body ng-controller="GetStations as self">
+  <ng-map zoom="{{$ctrl.zoom}}" center="{{$ctrl.center}}" style="height: 100%;">
+    <info-window id="stationInfo" >
+      <div ng-non-bindable="">
+        <p><strong>{{$ctrl.station.name}}</strong><br>
+        Available bikes: {{$ctrl.station.available_bikes}}<br>
+        Open stands: {{$ctrl.station.available_bike_stands}}</p>
+      </div>
+    </info-window>
+    <marker ng-repeat="(index, station) in $ctrl.stations"
+      id="{{station.number}}"
+      position="[{{station.position.lat}}, {{station.position.lng}}]"
+      title="{{station.number}} {{station.name}}"
+      on-click="$ctrl.showStationInfo(event, index)"></marker>
+  </ng-map>
+</body>
