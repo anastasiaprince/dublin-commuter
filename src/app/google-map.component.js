@@ -24,14 +24,10 @@ angular
         if (icon) {
           return icon;
         }
-        return {
-          path: 'google.maps.CIRCLE',
-          fillColor: 'white',
-          fillOpacity: 1,
-          scale: 1,
-          strokeColor: '#0076ad',
-          strokeWeight: 2
+        var icon = {
+          url: 'data:image/svg+xml;utf-8,<svg width="22" height="22" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.41421;"><circle cx="11" cy="11" r="10" stroke-dasharray="' + strokeDash + '" style="fill:url(#_Linear1);stroke-width:2px;stroke:\u0023' + strokeColor + ';"/><defs><linearGradient id="_Linear1" x1="0" x2="0" y1="1" y2="0"><stop offset="0%" stop-color="\u00230076ad"/><stop offset="' + bikesPercent + '" stop-color="\u00230076ad" /><stop offset="' + bikesPercent + '" stop-color="white" /><stop offset="100%" stop-color="white"/></linearGradient></defs></svg>'
         };
+        return icon;
       };
 
       self.showStationInfo = function (event, index) {
