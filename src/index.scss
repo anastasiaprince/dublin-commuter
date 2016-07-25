@@ -7,6 +7,16 @@ body {
   padding: 0;
 }
 
+input {
+  height: 2em;
+}
+
 #map {
   height: 100%;
+}
+
+.address-bar {
+  border-bottom: .5em solid #444;
+  padding: 1em;
+  margin: 0 auto;
 }

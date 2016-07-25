@@ -34,5 +34,14 @@ angular
         self.station = self.stations[index];
         self.map.showInfoWindow('stationInfo', this);
       };
+
+      self.startChanged = function () {
+        self.start = this.getPlace();
+        console.log('latitude', self.start.geometry.location.lat());
+        console.log('longitude', self.start.geometry.location.lng());
+        console.log('formatted address', self.start.formatted_address);
+        console.log('address', self.address);
+        self.map.setCenter(self.start.geometry.location);
+      };
     }
   });
