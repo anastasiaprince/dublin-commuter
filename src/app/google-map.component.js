@@ -1,3 +1,4 @@
+/* global google */
 'use strict';
 
 angular
@@ -6,14 +7,20 @@ angular
     templateUrl: 'app/google-map.template.html',
     controller: function GetStations(NgMap, $http) {
       var self = this;
-      NgMap.getMap().then(function (map) {
-        self.map = map;
-      });
-      self.zoom = 13;
-      self.center = '53.349819,-6.2609523';
 
       $http.get('https://api.jcdecaux.com/vls/v1/stations?contract=dublin&apiKey=371210d83e4976258d109d993ededcc395bce09e').then(function (response) {
         self.stations = response.data;
+      });
+
+      NgMap.getMap().then(function (map) {
+        var bounds = new google.maps.LatLngBounds();
+        for (var i = 0; i < self.stations.length; i++) {
+          var latlng = new google.maps.LatLng(self.stations[i].position.lat, self.stations[i].position.lng);
+          bounds.extend(latlng);
+          map.setCenter(bounds.getCenter());
+          map.fitBounds(bounds);
+        }
+        self.map = map;
       });
 
       self.getIcon = function (station) {
