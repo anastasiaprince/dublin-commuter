@@ -44,11 +44,18 @@ angular
 
       self.originChanged = function () {
         self.origin = this.getPlace();
-        self.map.setCenter(self.origin.geometry.location);
       };
 
       self.destChanged = function () {
         self.dest = this.getPlace();
+        setMapBounds(self.dest.geometry.location);
       };
+
+      function setMapBounds(latlng) {
+        var bounds = self.map.getBounds();
+        bounds.extend(latlng);
+        self.map.setCenter(bounds.getCenter());
+        self.map.fitBounds(bounds);
+      }
     }
   });

@@ -24,7 +24,11 @@
       position="[{{station.position.lat}}, {{station.position.lng}}]"
       title="{{station.name}}"
       on-click="$ctrl.showStationInfo(event, index)"></marker>
-    <marker position="{{$ctrl.origin.geometry.location}}"></marker>
-    <marker position="{{$ctrl.dest.geometry.location}}"></marker>
+    <directions
+      draggable="true"
+      travel-mode="BICYCLING"
+      origin="{{$ctrl.originAddress}}"
+      destination="{{$ctrl.destAddress}}">
+    </directions>
   </ng-map>
 </body>
