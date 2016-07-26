@@ -46,5 +46,9 @@ angular
         self.origin = this.getPlace();
         self.map.setCenter(self.origin.geometry.location);
       };
+
+      self.destChanged = function () {
+        self.dest = this.getPlace();
+      };
     }
   });
