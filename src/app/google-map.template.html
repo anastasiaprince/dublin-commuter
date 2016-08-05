@@ -2,12 +2,12 @@
   <div class="address-bar">
     <h1>dublinbikes directions</h1>
     Starting point: <br>
-    <input places-auto-complete size=80
+    <input places-auto-complete size=40
       ng-model="$ctrl.originAddress"
       component-restrictions="{country:'ie'}"
-      on-place-changed="$ctrl.originChanged()" /><br>
+      on-place-changed="$ctrl.originChanged()" /><br><br>
     Destination: <br>
-    <input places-auto-complete size=80
+    <input places-auto-complete size=40
       ng-model="$ctrl.destAddress"
       component-restrictions="{country:'ie'}"
       on-place-changed="$ctrl.destChanged()" />

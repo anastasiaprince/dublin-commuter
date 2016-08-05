@@ -16,7 +16,9 @@ input {
 }
 
 .address-bar {
-  border-bottom: .5em solid #444;
-  padding: 1em;
-  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
+  padding: 0 1em 2em;
+  position: fixed;
+  z-index: 1;
 }
