@@ -42,15 +42,6 @@ angular
         self.map.showInfoWindow('stationInfo', this);
       };
 
-      self.originChanged = function () {
-        self.origin = this.getPlace();
-      };
-
-      self.destChanged = function () {
-        self.dest = this.getPlace();
-        setMapBounds(self.dest.geometry.location);
-      };
-
       function setMapBounds(latlng) {
         var bounds = self.map.getBounds();
         bounds.extend(latlng);

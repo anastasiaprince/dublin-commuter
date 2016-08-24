@@ -1,17 +1,4 @@
 <body ng-controller="GetStations as self">
-  <div class="address-bar">
-    <h1>dublinbikes directions</h1>
-    Starting point: <br>
-    <input places-auto-complete size=40
-      ng-model="$ctrl.originAddress"
-      component-restrictions="{country:'ie'}"
-      on-place-changed="$ctrl.originChanged()" /><br><br>
-    Destination: <br>
-    <input places-auto-complete size=40
-      ng-model="$ctrl.destAddress"
-      component-restrictions="{country:'ie'}"
-      on-place-changed="$ctrl.destChanged()" />
-  </div>
   <ng-map style="height: 100%;" styles='[{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#4e5a5f"},{"visibility":"on"}]}]'>
     <info-window id="stationInfo" >
       <div ng-non-bindable="">
@@ -25,11 +12,5 @@
       position="[{{station.position.lat}}, {{station.position.lng}}]"
       title="{{station.name}}"
       on-click="$ctrl.showStationInfo(event, index)"></marker>
-    <directions
-      draggable="true"
-      travel-mode="BICYCLING"
-      origin="{{$ctrl.originAddress}}"
-      destination="{{$ctrl.destAddress}}">
-    </directions>
   </ng-map>
 </body>
