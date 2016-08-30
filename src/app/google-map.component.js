@@ -40,15 +40,19 @@ angular
       self.showStationInfo = function (event, index) {
         self.station = self.stations[index];
         self.map.showInfoWindow('stationInfo', this);
+        if (self.origin === undefined) {
+          self.originChanged(event.latLng);
+        } else {
+          self.destChanged(event.latLng);
+        }
       };
 
-      self.originChanged = function () {
-        self.origin = this.getPlace();
+      self.originChanged = function (coords) {
+        self.origin = coords;
       };
 
-      self.destChanged = function () {
-        self.dest = this.getPlace();
-        setMapBounds(self.dest.geometry.location);
+      self.destChanged = function (coords) {
+        self.dest = coords;
       };
 
       function setMapBounds(latlng) {
