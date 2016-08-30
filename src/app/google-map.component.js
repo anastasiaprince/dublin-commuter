@@ -54,12 +54,5 @@ angular
       self.destChanged = function (coords) {
         self.dest = coords;
       };
-
-      function setMapBounds(latlng) {
-        var bounds = self.map.getBounds();
-        bounds.extend(latlng);
-        self.map.setCenter(bounds.getCenter());
-        self.map.fitBounds(bounds);
-      }
     }
   });
