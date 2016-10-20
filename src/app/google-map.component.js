@@ -37,10 +37,6 @@ angular
         return icon;
       };
 
-      self.showStationInfo = function (event, index) {
-        self.station = self.stations[index];
-        self.map.showInfoWindow('stationInfo', this);
-      };
       self.setOrigin = function (event) {
         self.origin = event.latLng;
       };
