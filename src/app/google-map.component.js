@@ -24,29 +24,27 @@ angular
       });
 
       self.getIcon = function (station) {
-        var bikesPercent = station.available_bikes / station.bike_stands;
-        var strokeColor = '020615';
+        var availableBikes = station.available_bikes;
+        var openPercent = station.available_bike_stands / station.bike_stands;
+        var bikesPercent = availableBikes / station.bike_stands;
         var strokeDash = 'none';
+        var labelColor = '\u0023020615';
+        var fillColor = '\u00230076ad';
         if (bikesPercent === 0) {
-          strokeColor = '020615';
           strokeDash = '3,3';
         }
+        if (bikesPercent === 1) {
+          fillColor = '\u0023020615';
+          labelColor = 'white';
+        }
         var icon = {
-          url: 'data:image/svg+xml;utf-8,<svg width="22" height="22" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.41421;"><circle cx="11" cy="11" r="10" stroke-dasharray="' + strokeDash + '" style="fill:url(#_Linear1);stroke-width:2px;stroke:\u0023' + strokeColor + ';"/><defs><linearGradient id="_Linear1" x1="0" x2="0" y1="1" y2="0"><stop offset="0%" stop-color="\u00230076ad"/><stop offset="' + bikesPercent + '" stop-color="\u00230076ad" /><stop offset="' + bikesPercent + '" stop-color="white" /><stop offset="100%" stop-color="white"/></linearGradient></defs></svg>'
+          url: 'data:image/svg+xml;utf-8,<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.41421;"><g transform="matrix(-0.96,1.17566e-16,-1.22465e-16,-1,29.92,33)"><path d="M14.5,2C14.5,2 2,11 2,20C2,26.623 7.601,32 14.5,32C21.399,32 27,26.623 27,20C27,11 14.5,2 14.5,2Z" stroke-dasharray="' + strokeDash + '" style="fill:url(#_Linear1);stroke:\u0023020615;stroke-width:2px;"/></g><text x="16" y="20" text-anchor="middle" fill="' + labelColor + '" style="font: bold 14px Helvetica, Arial, sans-serif;">' + availableBikes + '</text><defs><linearGradient id="_Linear1" x1="0" x2="0" y1="1" y2="0"><stop offset="0%" stop-color="white"/><stop offset="' + openPercent + '" stop-color="white" /><stop offset="' + openPercent + '" stop-color="' + fillColor + '" /><stop offset="100%" stop-color="' + fillColor + '"/></linearGradient></defs></svg>'
         };
         return icon;
       };
 
-      self.showStationInfo = function (event, index) {
-        self.station = self.stations[index];
-        self.map.showInfoWindow('stationInfo', this);
+      self.setOrigin = function (event) {
+        self.origin = event.latLng;
       };
-
-      function setMapBounds(latlng) {
-        var bounds = self.map.getBounds();
-        bounds.extend(latlng);
-        self.map.setCenter(bounds.getCenter());
-        self.map.fitBounds(bounds);
-      }
     }
   });
