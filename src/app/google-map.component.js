@@ -29,7 +29,7 @@ angular
         var bikesPercent = availableBikes / station.bike_stands;
         var strokeDash = 'none';
         var labelColor = '\u0023020615';
-        var fillColor = '\u00230076ad';
+        var fillColor = '\u002349c5ff';
         if (bikesPercent === 0) {
           strokeDash = '3,3';
         }
