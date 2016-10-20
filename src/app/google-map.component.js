@@ -24,15 +24,20 @@ angular
       });
 
       self.getIcon = function (station) {
-        var bikesPercent = station.available_bikes / station.bike_stands;
-        var strokeColor = '020615';
+        var availableBikes = station.available_bikes;
+        var bikesPercent = availableBikes / station.bike_stands;
         var strokeDash = 'none';
+        var labelColor = '\u0023020615';
+        var fillColor = '\u00230076ad';
         if (bikesPercent === 0) {
-          strokeColor = '020615';
           strokeDash = '3,3';
         }
+        if (bikesPercent === 1) {
+          fillColor = '\u0023020615';
+          labelColor = 'white';
+        }
         var icon = {
-          url: 'data:image/svg+xml;utf-8,<svg width="22" height="22" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.41421;"><circle cx="11" cy="11" r="10" stroke-dasharray="' + strokeDash + '" style="fill:url(#_Linear1);stroke-width:2px;stroke:\u0023' + strokeColor + ';"/><defs><linearGradient id="_Linear1" x1="0" x2="0" y1="1" y2="0"><stop offset="0%" stop-color="\u00230076ad"/><stop offset="' + bikesPercent + '" stop-color="\u00230076ad" /><stop offset="' + bikesPercent + '" stop-color="white" /><stop offset="100%" stop-color="white"/></linearGradient></defs></svg>'
+          url: 'data:image/svg+xml;utf-8,<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.41421;"><circle cx="16" cy="16" r="15" stroke-dasharray="' + strokeDash + '" style="fill:url(#_Linear1);stroke-width:2px;stroke:\u0023020615;"/><text x="16" y="22" text-anchor="middle" fill="' + labelColor + '" style="font: bold 16px Helvetica, Arial, sans-serif;">' + availableBikes + '</text><defs><linearGradient id="_Linear1" x1="0" x2="0" y1="1" y2="0"><stop offset="0%" stop-color="' + fillColor + '"/><stop offset="' + bikesPercent + '" stop-color="' + fillColor + '" /><stop offset="' + bikesPercent + '" stop-color="white" /><stop offset="100%" stop-color="white"/></linearGradient></defs></svg>'
         };
         return icon;
       };
