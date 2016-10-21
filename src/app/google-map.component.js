@@ -43,8 +43,14 @@ angular
         return icon;
       };
 
-      self.setOrigin = function (event) {
-        self.origin = event.latLng;
+      self.getDirections = function () {
+        if (self.origin === undefined) {
+          self.origin = this.getPosition();
+          this.setIcon('data:image/svg+xml;utf-8,<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.41421;"><g transform="matrix(-0.96,1.17566e-16,-1.22465e-16,-1,29.92,33)"><path d="M14.5,2C14.5,2 2,11 2,20C2,26.623 7.601,32 14.5,32C21.399,32 27,26.623 27,20C27,11 14.5,2 14.5,2Z" stroke-dasharray="(3,3)" style="fill:green;stroke:\u0023020615;stroke-width:2px;"/></g><text x="16" y="20" text-anchor="middle" fill="\u0023020615" style="font: bold 14px Helvetica, Arial, sans-serif;">A</text></svg>');
+        } else {
+          self.dest = this.getPosition();
+          this.setIcon('data:image/svg+xml;utf-8,<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.41421;"><g transform="matrix(-0.96,1.17566e-16,-1.22465e-16,-1,29.92,33)"><path d="M14.5,2C14.5,2 2,11 2,20C2,26.623 7.601,32 14.5,32C21.399,32 27,26.623 27,20C27,11 14.5,2 14.5,2Z" stroke-dasharray="(3,3)" style="fill:red;stroke:\u0023020615;stroke-width:2px;"/></g><text x="16" y="20" text-anchor="middle" fill="\u0023020615" style="font: bold 14px Helvetica, Arial, sans-serif;">B</text></svg>');
+        }
       };
     }
   });
