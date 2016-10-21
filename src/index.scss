@@ -7,10 +7,21 @@ $offwhite: #f2f2f2;
 html,
 body {
   color: $dbblack;
-  font: 18px/1.5 Helvetica, Arial, sans-serif;
+  font: 16px/1.5 Helvetica, Arial, sans-serif;
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+.header {
+  background-color: #ffffff;
+  padding: 1em;
+  width: 100%;
+  z-index: 10;
 }
 
 #map {
