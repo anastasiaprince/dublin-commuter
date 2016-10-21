@@ -43,3 +43,9 @@ h1 {
   display: table-cell;
   vertical-align: middle;
 }
+
+@media (max-width: 600px) {
+  html, body {
+    font-size: 14px;
+  }
+}
