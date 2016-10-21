@@ -29,7 +29,6 @@ h1 {
 }
 
 .loading {
-  background-color: $offwhite;
   display: table;
   height: 100%;
   left: 0;
@@ -37,7 +36,7 @@ h1 {
   text-align: center;
   top: 0;
   width: 100%;
-  z-index: 9998;
+  z-index: 5;
 }
 
 .loading__text {
