@@ -16,13 +16,18 @@
   </head>
 
   <body>
-    <div class="header">
-      <p>Click any two stations to see the best cycling route between them.</p>
+    <div class="container">
+      <div class="header">
+        <h1>Dublinbikes station map &amp; directions</h1>
+        <p>Click any two stations to see the best cycling route between them.</p>
+      </div>
+      <div class="map-container">
+        <div id="js-loading" class="loading">
+        <div class="loading__text"><img src="assets/img/loader.gif" height="60" width="60"><br><small>loading station map&hellip;</small></div>
+        </div>
+        <google-map></google-map>
+      </div>
     </div>
-    <div id="js-loading" class="loading">
-      <div class="loading__text"><img src="assets/img/loader.gif" height="60" width="60"><br><small>loading station map&hellip;</small></div>
-    </div>
-    <google-map></google-map>
     <!-- build:js({.tmp,src}) scripts/vendor.js -->
     <!-- bower:js -->
     <!-- run `gulp inject` to automatically populate bower script dependencies -->
